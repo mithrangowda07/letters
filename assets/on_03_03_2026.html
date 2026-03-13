@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg-gradient: linear-gradient(to right, #ffdde1, #ee9ca7);
+    --card-bg: white;
+    --text-color: #444;
+    --heading-color: #ff4b5c;
+}
+
+body.dark {
+    --bg-gradient: linear-gradient(to right, #141e30, #243b55);
+    --card-bg: #1e1e1e;
+    --text-color: #f1f1f1;
+    --heading-color: #ff8fa3;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: var(--bg-gradient);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    transition: 0.4s;
+}
+
+/* Toggle Button */
+.toggle-mode {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    font-size: 14px;
+}
+
+/* Card */
+.container {
+    background: var(--card-bg);
+    padding: 40px;
+    width: 100%;
+    max-width: 750px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    margin-top: 60px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 38px;
+    color: var(--heading-color);
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--text-color);
+    text-align: left;
+}
+
+.signature {
+    margin-top: 30px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 26px;
+    color: var(--heading-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Optimization */
+@media (max-width: 600px) {
+    .container {
+        padding: 25px;
+        margin-top: 80px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .message {
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<button class="toggle-mode" onclick="toggleMode()">🌙 Toggle Mode</button>
+
+<div class="container">
+
+<h1>Happy Birthday</h1>
+<h1>To My Beautiful ❤️</h1>
+
+<div class="message">
+Hi Sweetheart ❤️,<br><br>
+
+From the day I met you, one thing I understood about you is that you cannot stay alone. I thought you needed a friend and companion with you, so I started giving my time to you. But in the meantime, I fell in love with you. 💕 Even though you have told me so many times that you don't want any love or any man in your life, your actions and emotions always needed me. That was the only hope for me to stay for 6 months. 🤍<br><br>
+Anyways, Happy Birthday to the best person in my life 🎂✨. May all the God bless you, and may all your dreams come true (I know I am your only dream 😌❤️). Stay always happy, my darling 💖.<br><br>
+
+Sorry for too many fights this year, but I guess there are more to come, maybe even harder, because that's how life will fuck's us in the future. But for all of these, I will be there with you until my last breath. ❤️‍🔥 I hope we will marry soon and achieve our dreams faster… The main one — to roam around the world 🌍✈️. I guess we will go to many more places than we are dreaming of (so bega bandu madve hagu chinna plzzz 😉💍).<br><br>
+
+Thank you so much for making my birthday special this year 🎉. This was the first time I spent time like that… <br>Thank you for being there during some hard times 🤍.<br>
+Thank you for coming during holidays.<br>
+Thank you for staying longer in college just for me 🥹.<br>
+Thank you for helping me in studies (even for getting scolded by me 😅).<br>
+Thank you for understanding my family situation 🙏.<br>
+Finally… thank you for all your love, care, and support ❤️.<br><br>
+
+Oh, one more thank you for praying for India to win in cricket 😁🏏🇮🇳.<br><br>
+
+Once more, Happy Birthday, my Love Bug ❤️🐞 (anyway, the new nickname for you is Bug — you don't have the rights to say this nickname is not good… you are bug, that's it 😌😂).<br><br>
+
+I love you, my darling ❤️<br>
+I love you, my lady 💕<br>
+I love you, my sweetheart 💖<br>
+I love you, my Queen 👑<br>
+I love you, my Bug ❤️🐞<br><br>
+</div>
+
+<div class="signature">
+Always Yours<br>
+</div>
+
+</div>
+
+<script>
+function toggleMode() {
+    document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>

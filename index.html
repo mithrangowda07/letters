@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Letters for You</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* LOCK BOX */
+.lock-box {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+.lock-box input {
+  width: 80%;
+  padding: 12px;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.lock-box button {
+  margin-top: 15px;
+  padding: 10px 25px;
+  border-radius: 20px;
+  border: none;
+  background: #ff6f91;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.error {
+  margin-top: 10px;
+  color: #ff6f91;
+  font-size: 0.9rem;
+}
+
+/* ORIGINAL CONTAINER (UNCHANGED) */
+.container {
+  width: 100%;
+  max-width: 850px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.topic {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.topic:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-4px);
+}
+
+.number {
+  color: #ff6f91;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+footer {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.hidden {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOCK SCREEN -->
+<div class="lock-box" id="lockScreen">
+  <h1>🔒 Private Letters</h1>
+  <p>Only my Princess knows the secret 🤍</p>
+  <input type="password" id="passwordInput" placeholder="Enter Password">
+  <br>
+  <button onclick="unlock()">Unlock</button>
+  <div class="error" id="errorMsg"></div>
+</div>
+
+<!-- ORIGINAL PAGE (UNCHANGED CONTENT) -->
+<div class="container hidden" id="mainContent">
+  <h1>Letters for You, My Princess 🤍</h1>
+  <div class="subtitle">Two Hearts • One Journey • Forever • Memories • Promises</div>
+
+  <a href="assets/one_year_of_us.html" class="topic">
+    <span><span class="number">01.</span> One Year of Us 🤍 </span>
+    <span>➜</span>
+  </a>
+
+  <a href="assets/on_24_12_2025.html" class="topic">
+    <span><span class="number">02.</span> On 24th Dec 2025 💗 </span>
+    <span>➜</span>
+  </a>
+
+  <a href="assets/on_01_01_2026.html" class="topic">
+    <span><span class="number">03.</span> Letter From My Love ❤️ </span>
+    <span>➜</span>
+  </a>
+
+  <a href="assets/question.html" class="topic">
+    <span><span class="number">04.</span> Question for You 💓 </span>
+    <span>➜</span>
+  </a>
+
+  <a href="assets/on_03_03_2026.html" class="topic">
+    <span><span class="number">05.</span> Happy Brithday My Dear 🎂✨ (on 03/03/2026) </span>
+    <span>➜</span>
+  </a>
+
+  <a href="assets/save_account.html" class="topic">
+    <span><span class="number">06.</span>Saving Account</span>
+    <span>➜</span>
+  </a>
+
+  <footer>
+    Designed by your love ❤️
+  </footer>
+</div>
+
+<script>
+function unlock() {
+
+  const input = document.getElementById("passwordInput").value;
+  const errorMsg = document.getElementById("errorMsg");
+
+  const num = parseInt(input);
+
+  function complexCheck(n){
+      let base = (Math.pow(2, Math.sqrt(256)) * 3) / Math.pow(2,7);
+      let calc = (n * 7 + base) % base;
+      return calc === 0;
+  }
+
+  if (!isNaN(num) && complexCheck(num)) {
+
+      document.getElementById("lockScreen").classList.add("hidden");
+      document.getElementById("mainContent").classList.remove("hidden");
+
+  } else {
+      errorMsg.textContent = "Wrong password… try again 🤍";
+  }
+}
+</script>
+
+</body>
+</html>

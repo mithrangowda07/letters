@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Love Me? 💕</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    /* Floating hearts background */
+    .heart-bg {
+        position: fixed;
+        font-size: 20px;
+        opacity: 0.1;
+        animation: float 15s infinite;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-30px) rotate(10deg); }
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 40px 30px;
+        border-radius: 30px;
+        text-align: center;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 
+                    0 0 100px rgba(255, 255, 255, 0.1) inset;
+        width: 100%;
+        max-width: 450px;
+        position: relative;
+        z-index: 1;
+        animation: slideIn 0.8s ease;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .video-container {
+        position: relative;
+        margin-bottom: 25px;
+        display: inline-block;
+    }
+
+    video {
+        border-radius: 20px;
+        width: 100%;
+        max-width: 260px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border: 4px solid #ff6b9d;
+        transition: transform 0.3s ease;
+    }
+
+    video:hover {
+        transform: scale(1.05);
+    }
+
+    .sparkle {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(circle, #fff, transparent);
+        border-radius: 50%;
+        animation: sparkle 2s infinite;
+        pointer-events: none;
+    }
+
+    @keyframes sparkle {
+        0%, 100% { opacity: 0; transform: scale(0); }
+        50% { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+        background: linear-gradient(135deg, #ff6b9d, #c92a5d);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 20px 0;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    .subtitle {
+        color: #666;
+        font-size: 1rem;
+        margin-bottom: 30px;
+        font-style: italic;
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .love-btn {
+        border: none;
+        padding: 16px 40px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .love-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .love-btn:active::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .yes {
+        background: linear-gradient(135deg, #ff6b9d, #ff2e63);
+        color: white;
+    }
+
+    .yes:hover {
+        transform: scale(1.1) rotate(-2deg);
+        box-shadow: 0 10px 30px rgba(255, 46, 99, 0.4);
+    }
+
+    .no {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+
+    .no:hover {
+        transform: scale(1.1) rotate(2deg);
+        box-shadow: 0 10px 30px rgba(118, 75, 162, 0.4);
+    }
+
+    #result {
+        margin-top: 30px;
+        animation: fadeIn 0.8s ease;
+    }
+
+    #result p {
+        font-size: 1.2rem;
+        margin: 15px 0;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    #result b {
+        color: #ff2e63;
+        font-size: 1.3rem;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Celebration Emoji */
+    .emoji {
+        position: fixed;
+        bottom: -50px;
+        font-size: 32px;
+        pointer-events: none;
+        z-index: 1000;
+        animation: riseUp linear forwards;
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+    }
+
+    @keyframes riseUp {
+        0% {
+            transform: translateX(var(--start-x)) translateY(0) rotate(0deg) scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(var(--end-x)) translateY(-120vh) rotate(var(--rotation)) scale(1.5);
+            opacity: 0;
+        }
+    }
+
+    /* Confetti */
+    .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        top: -10px;
+        z-index: 1000;
+        animation: confettiFall linear forwards;
+    }
+
+    @keyframes confettiFall {
+        to {
+            transform: translateY(110vh) rotate(720deg);
+            opacity: 0;
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        .card {
+            padding: 30px 20px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+        }
+
+        video {
+            max-width: 220px;
+        }
+
+        .love-btn {
+            padding: 14px 30px;
+            font-size: 1rem;
+        }
+
+        #result p {
+            font-size: 1.1rem;
+        }
+
+        #result b {
+            font-size: 1.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .btn-container {
+            gap: 15px;
+        }
+
+        .love-btn {
+            padding: 12px 25px;
+            font-size: 0.95rem;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts background -->
+<div class="heart-bg" style="top: 10%; left: 10%;">💕</div>
+<div class="heart-bg" style="top: 20%; right: 15%; animation-delay: 2s;">❤️</div>
+<div class="heart-bg" style="bottom: 15%; left: 20%; animation-delay: 4s;">💖</div>
+<div class="heart-bg" style="bottom: 25%; right: 10%; animation-delay: 6s;">💝</div>
+<div class="heart-bg" style="top: 50%; left: 5%; animation-delay: 3s;">🥰</div>
+<div class="heart-bg" style="top: 60%; right: 5%; animation-delay: 5s;">💗</div>
+
+<div class="card">
+    <div class="video-container">
+        <video src="images/question/1.mp4" autoplay loop muted playsinline></video>
+        <div class="sparkle" style="top: 10%; left: 10%;"></div>
+        <div class="sparkle" style="top: 15%; right: 15%; animation-delay: 1s;"></div>
+        <div class="sparkle" style="bottom: 10%; left: 20%; animation-delay: 0.5s;"></div>
+    </div>
+
+    <h1>Will you love me??? 💕</h1>
+    <p class="subtitle">Choose your answer wisely... 💭</p>
+
+    <div class="btn-container">
+        <button class="love-btn yes" onclick="yesClick()">Yes ❤️</button>
+        <button class="love-btn no" onclick="noClick()">No 💔</button>
+    </div>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function yesClick() {
+    const card = document.querySelector('.card');
+    card.style.animation = 'none';
+    setTimeout(() => {
+        card.style.animation = 'slideIn 0.8s ease';
+    }, 10);
+
+    document.getElementById("result").innerHTML = `
+        <p><b>Yayyy!!! ❤️✨</b></p>
+        <p>I knew it! You're the best! 😊</p>
+        <p>Together forever... 💑</p>
+        <div class="video-container">
+            <video src="images/question/2.mp4" autoplay loop muted playsinline style="max-width: 220px; margin-top: 20px;"></video>
+        </div>
+    `;
+    celebrate();
+}
+
+function noClick() {
+    const card = document.querySelector('.card');
+    card.style.animation = 'none';
+    setTimeout(() => {
+        card.style.animation = 'slideIn 0.8s ease';
+    }, 10);
+
+    document.getElementById("result").innerHTML = `
+        <p><b>Wait... What?? 😤</b></p>
+        <p>You don't have an option 😏</p>
+        <p>You must agree, that's it 💖</p>
+        <p><b>Go click YES now!!! 👆</b></p>
+        <div class="video-container">
+            <video src="images/question/3.mp4" autoplay loop muted playsinline style="max-width: 220px; margin-top: 20px;"></video>
+        </div>
+    `;
+}
+
+/* Celebration Effect */
+function celebrate() {
+    const emojis = ["⭐", "💕", "🥰", "💝", "💖", "🎉", "✨", "💗", "❤️", "🎊"];
+    const colors = ["#ff6b9d", "#ff2e63", "#667eea", "#764ba2", "#f093fb"];
+
+    // Emoji animation
+    for (let i = 0; i < 40; i++) {
+        setTimeout(() => {
+            const e = document.createElement("div");
+            e.className = "emoji";
+            e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+            const startX = window.innerWidth / 2 - 25;
+            const endX = (Math.random() - 0.5) * window.innerWidth * 0.8;
+            const rotation = Math.random() * 720 - 360;
+
+            e.style.left = startX + "px";
+            e.style.setProperty("--start-x", "0px");
+            e.style.setProperty("--end-x", endX + "px");
+            e.style.setProperty("--rotation", rotation + "deg");
+
+            const duration = Math.random() * 2 + 3;
+            e.style.animationDuration = duration + "s";
+            e.style.animationDelay = Math.random() * 0.5 + "s";
+
+            document.body.appendChild(e);
+
+            setTimeout(() => e.remove(), (duration + 0.5) * 1000);
+        }, i * 50);
+    }
+
+    // Confetti animation
+    for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            const c = document.createElement("div");
+            c.className = "confetti";
+            c.style.left = Math.random() * window.innerWidth + "px";
+            c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            c.style.animationDuration = (Math.random() * 2 + 2) + "s";
+            c.style.animationDelay = Math.random() * 0.3 + "s";
+
+            document.body.appendChild(c);
+
+            setTimeout(() => c.remove(), 4000);
+        }, i * 30);
+    }
+}
+</script>
+
+</body>
+</html>

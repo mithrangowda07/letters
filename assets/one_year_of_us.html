@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Year of Us 🤍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Animated hearts background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: fixed;
+            color: rgba(255, 182, 193, 0.3);
+            font-size: 20px;
+            animation: float 15s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .heart:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .heart:nth-child(4) { left: 40%; animation-delay: 1s; }
+        .heart:nth-child(5) { left: 50%; animation-delay: 3s; }
+        .heart:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .heart:nth-child(7) { left: 70%; animation-delay: 2.5s; }
+        .heart:nth-child(8) { left: 80%; animation-delay: 4.5s; }
+        .heart:nth-child(9) { left: 90%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            height: 100%;
+            max-height: 90vh;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3), 
+                        0 0 40px rgba(255, 182, 193, 0.2);
+            padding: 50px 40px;
+            animation: fadeIn 1.5s ease-in;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            max-height: 90vh;
+            overflow: hidden;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: pulse 3s infinite ease-in-out;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .header h1 {
+            font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+            font-size: 3.5em;
+            color: #d63384;
+            text-shadow: 2px 2px 8px rgba(255, 182, 193, 0.8),
+                         0 0 20px rgba(255, 105, 180, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        .letter-content {
+            line-height: 2;
+            font-size: 1.15em;
+            color: #4a4a4a;
+            text-align: justify;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 10px;
+        }
+
+        .letter-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .letter-content::-webkit-scrollbar-track {
+            background: rgba(255, 182, 193, 0.1);
+            border-radius: 10px;
+        }
+
+        .letter-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 105, 180, 0.5);
+            border-radius: 10px;
+        }
+
+        .letter-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 105, 180, 0.7);
+        }
+
+        .letter-content p {
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .letter-content p:nth-child(1) { animation-delay: 0.2s; }
+        .letter-content p:nth-child(2) { animation-delay: 0.4s; }
+        .letter-content p:nth-child(3) { animation-delay: 0.6s; }
+        .letter-content p:nth-child(4) { animation-delay: 0.8s; }
+        .letter-content p:nth-child(5) { animation-delay: 1s; }
+        .letter-content p:nth-child(6) { animation-delay: 1.2s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .letter-content strong {
+            color: #d63384;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        .letter-content strong::after {
+            content: '♥';
+            margin-left: 5px;
+            color: #ff69b4;
+            font-size: 0.9em;
+            animation: heartBeat 2s infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .letter-content em {
+            font-style: italic;
+            color: #c71585;
+            font-weight: 600;
+        }
+
+        .letter-content u {
+            text-decoration: underline;
+            text-decoration-color: #ff69b4;
+            text-underline-offset: 3px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(255, 182, 193, 0.3) 0%, rgba(255, 105, 180, 0.3) 100%);
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #8b008b;
+        }
+
+        .ending {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px dashed rgba(255, 105, 180, 0.3);
+            animation: fadeIn 2s ease-in;
+        }
+
+        .ending-signature {
+            font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+            font-size: 2em;
+            color: #d63384;
+            margin-top: 20px;
+            text-shadow: 2px 2px 8px rgba(255, 182, 193, 0.8);
+        }
+
+        .ending-hearts {
+            font-size: 2em;
+            margin-top: 20px;
+            animation: floatHearts 3s infinite ease-in-out;
+        }
+
+        @keyframes floatHearts {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .ending-hearts span {
+            display: inline-block;
+            margin: 0 5px;
+            animation: heartBeat 2s infinite;
+        }
+
+        .ending-hearts span:nth-child(1) { animation-delay: 0s; }
+        .ending-hearts span:nth-child(2) { animation-delay: 0.5s; }
+        .ending-hearts span:nth-child(3) { animation-delay: 1s; }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                max-height: 95vh;
+            }
+
+            .card {
+                padding: 30px 20px;
+                border-radius: 20px;
+                max-height: 95vh;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .letter-content {
+                font-size: 1em;
+                line-height: 1.8;
+            }
+
+            .ending-signature {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                max-height: 95vh;
+            }
+
+            .card {
+                padding: 25px 15px;
+                max-height: 95vh;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .letter-content {
+                font-size: 0.95em;
+                text-align: left;
+            }
+        }
+
+        /* Special styling for important phrases */
+        .letter-content p:has(strong:first-child) {
+            font-size: 1.2em;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>One Year of Us 🤍</h1>
+            </div>
+
+            <div class="letter-content">
+                <p>My love,</p>
+
+                <p>Today marks <strong>one year of being together</strong>, and I want to tell you everything from my heart — just like I feel it, just like it happened.</p>
+
+                <p>I first started liking you on the day <strong>you slept on my shoulder without asking my permission</strong>. After you woke up, you smiled and asked, <em>"You don't have any problem, right?"</em></p>
+
+                <p>From that very day, you became <strong>my crush, my princess, my everything</strong>.</p>
+
+                <p>The way you love me,<br>
+                the way you care for me,<br>
+                the way you talk,<br>
+                the way you ask about my family,<br>
+                the way you listen to me —<br>
+                slowly, without even realizing it, <strong>I fell deeply in love with you</strong>.</p>
+
+                <p>The main reason I fell for you is <strong>how much you care</strong> and how <strong>sensitive</strong> you are. Your strict family made me understand that I need to give you time. That is how we moved from friends, to close friends, and then I completely fell for you.</p>
+
+                <p>Small things mattered the most to me —<br>
+                you sharing the food you brought from home,<br>
+                asking me to stay back during lunch so we could eat together.<br>
+                All these moments made me feel like <strong>you were my dream girl</strong>.</p>
+
+                <p>I will never forget the <strong>first time I saw you in a saree</strong>, on <strong>Kannada Habba – 20/06/2024</strong>.</p>
+
+                <p>That day, I truly felt like I was always with an angel.</p>
+
+                <p>Your <strong>bright eyes</strong>,<br>
+                your <strong>rounded cheeks</strong>,<br>
+                your <strong>happy smile</strong>,<br>
+                the <strong>maroon saree</strong>,<br>
+                your <strong>long hair</strong> —<br>
+                everything made me feel complete.</p>
+
+                <p>When you came out of the <strong>ISE department</strong>, I had butterflies the entire day. Even though I didn't tell you that I loved you, that day was perfect. You wanted your photos, but all I wanted was <strong>photos of us together</strong>.</p>
+
+                <p>Then came the painful time.</p>
+
+                <p>I told you that I had feelings for someone and asked you to guess. You named everyone — <strong>but not yourself</strong>. That disappointed me so much.</p>
+
+                <p>Finally, the day came when I had to tell you the truth — <strong>you were the one I loved</strong>. With strong suggestions from Meghana and some boost from her, I told you at the <strong>same place</strong>, do you remember? In the <strong>Telecommunication department</strong>, where I had earlier asked you to search for the girl I loved.</p>
+
+                <p>I told you everything… but you didn't accept me.</p>
+
+                <p>You said you could do anything else, but not this.</p>
+
+                <p>But I needed <em>you</em>.</p>
+
+                <p>I even came by metro just hoping you would accept me. I paid a <strong>₹100 fine</strong>, but still, you didn't accept me.</p>
+
+                <p>Those were very long days for me. I cried so much, but every time the answer was the same.</p>
+
+                <p>Then you told me you would <strong>search for a girl for me</strong> — but you never found one.</p>
+
+                <p>Meanwhile, the bonding between us kept growing stronger and stronger.</p>
+
+                <p>Every time I asked about a relationship, you were scared — scared of men, scared of what was happening in your family. I could feel that you liked me, but society and what you had seen made you reject me.</p>
+
+                <p>Still, <strong>I stayed</strong>.</p>
+
+                <p>I stayed until the day you could accept me.</p>
+
+                <p>Then came our <strong>first date</strong> — <strong>24/12/2024</strong>, at <strong>Gopalan Arcade Mall</strong>, McDonald's.</p>
+
+                <p>The intention was to shop for a shirt for my upcoming birthday. I don't know how to shop, so you decided everything. You took me to McDonald's, and we ate burgers together.</p>
+
+                <p>That was the <strong>first time I went on a date with a girl</strong>, sitting beside you. Looking at your face while eating the burger you fed me made me fall in love with you even more.</p>
+
+                <p>Shopping was average — because I don't know how to shop, and you didn't know how to select a shirt for <em>your boy</em>.</p>
+
+                <p>Still, it was a <strong>beautiful day</strong> in my life.</p>
+
+                <p>Then came another important day.</p>
+
+                <p>Meghana was depressed because of something related to her crush. We spoke for two hours, and that conversation made me realize that I was wasting my time on you without studying, and you were also not getting close to me.</p>
+
+                <p>So I decided — and I told Meghana — that I would ask you <strong>one last time</strong> about a relationship. If you said no, I would stop talking to you.</p>
+
+                <p>The next day, you and I were in <strong>Classroom 109</strong>. I told you everything I had decided the previous night. Meghana interrupted us, so we went to the <strong>library</strong>.</p>
+
+                <p>There came the twist.</p>
+
+                <p>After <strong>six months of waiting</strong>, you finally said, <em>"I will think."</em></p>
+
+                <p>That single sentence meant everything to me.</p>
+
+                <p>Even though I was the reason you slept peacefully, you took six months to realize that you were in love with me. Still, you asked for a few days — and I waited.</p>
+
+                <p>Then came <strong>New Year and my birthday — 01/01/2025</strong>.</p>
+
+                <p>I wore the shirt you selected. We went to <strong>RR Temple</strong> with your friends and celebrated with cake cutting. Later, it was just you and me in <strong>Classroom 110</strong>.</p>
+
+                <p>I told you <em>"I love you"</em>, but you didn't say it back. You asked for more time.</p>
+
+                <p>But here comes the twist, madam.</p>
+
+                <p>You sat on my lap and <strong>kissed my forehead</strong>. Do you remember?</p>
+
+                <p>And I kissed you too.</p>
+
+                <p>That was the moment I knew — <strong>you would accept me</strong>.</p>
+
+                <p>Even though I cried on my birthday, having <em>you</em> made me so happy. That same day, I told Meghana everything that happened in the classroom because I couldn't hold it in anymore — <strong>you were finally mine</strong>.</p>
+
+                <p>Wait… did I miss something?</p>
+
+                <p>Yes — December.</p>
+
+                <p>Do you remember, naughty girl?</p>
+
+                <p>You allowed me to bite your cheek,<br>
+                you slept on my lap,<br>
+                we took photos sitting beside each other,<br>
+                we hugged so much.</p>
+
+                <p>Do you really think all that was <em>just friendship</em>?</p>
+
+                <p>Finally, the day came when you accepted me.</p>
+
+                <p>But before that, the night before, I was sad — because you still hadn't said <em>"I love you too."</em> You told me to ask the next day.</p>
+
+                <p>So I took a <strong>Dairy Milk chocolate</strong> and in the same <strong>Classroom 110</strong>, I said <em>"I love you."</em></p>
+
+                <p>And finally, you said it back — <em>"I love you too."</em></p>
+
+                <p>Within seconds, you got a kiss on your cheek.</p>
+
+                <p>Finally, I got you <strong>permanently</strong>.</p>
+
+                <p>The sad part?</p>
+
+                <p>We don't even know the exact date.</p>
+
+                <p>Then our real story began.</p>
+
+                <p>So many days together —<br>
+                again Gopalan Arcade Mall,<br>
+                Nayandahalli Mall (first time 🫣🫣 you know it),<br>
+                Orion Mall,<br>
+                Mantri Square,<br>
+                Malleshwaram,<br>
+                walks in RR Nagar,<br>
+                so many visits to RR Temple (I think this temple made us be together).</p>
+
+                <p>Random walks, me making you bunk classes just so we could spend time together.</p>
+
+                <p>After all this, I took you to another city — <strong>Ramadevara Betta</strong>.</p>
+
+                <p>It was a beautiful day for both of us. You sat on my lap the entire car journey.</p>
+
+                <p>I really love talking to you.</p>
+
+                <p>You make me feel like <strong>home</strong>.</p>
+
+                <p>You are the <strong>best person I have ever met</strong>.</p>
+
+                <p>Even though we fight a lot, we never take it to tomorrow or involve anyone else. That is the best thing about us — please keep it that way.</p>
+
+                <p>I truly believe <strong>we will marry soon</strong>.</p>
+
+                <p>Those long night talks at your grandmother's house, long walks, our promises to each other — everything is very special to me. I believe we will keep our promises until our last moment.</p>
+
+                <p>We have memories in every place we visited, even though we have no photos.</p>
+
+                <p>On another day, when you were wearing a <strong>black saree</strong>, I kept telling you about your <strong>waist the whole day</strong> — do you remember?</p>
+
+                <p>Do you remember that <strong>I bought you bangles</strong>?</p>
+
+                <p>Do you remember <strong>where I kissed you that day</strong>?</p>
+
+                <p>Even though <strong>our photo could be my wallpaper</strong>, I can't do that until <strong>I get placed</strong>.</p>
+
+                <p>We will <strong>study together</strong>, get a <strong>good placement</strong>, and then <strong>let our parents arrange our marriage</strong>.</p>
+
+                <p>You took time to decide, but you made the decision before I gave up — <strong>thank you for that</strong>.</p>
+
+                <p>Tomorrow is <strong>24th December</strong> — one year of being together. It never felt like one year. What a wonderful year it has been. You made it perfect.</p>
+
+                <p>Even though I've shared so much about before you accepted me, after that… there is a whole universe of love I still cannot express.</p>
+
+                <p>I Know that I have made mistakes, but I have learned from them and I will never make the same mistake again.</p>
+
+                <p>I know that I have missed a lot of things to say here, but you may know them better than me or I will tell you in some other way.</p>
+
+                <p>I never had a dream girl — <strong>you became my dream girl</strong> and my upcoming wife (too soon…).</p>
+
+                <p>I love you so much.</p>
+
+                <p>You are my princess.<br>
+                You are my dream.<br>
+                You are my sweetheart.<br>
+                You are my darling.<br>
+                You are my past.<br>
+                You are my present.<br>
+                You are my future.<br>
+                You are my lady.<br>
+                You are my family.<br>
+                And you are only mine.</p>
+
+                <p>I love you so much.</p>
+
+                <p>Very happy for one year together.</p>
+
+                <p>Please promise me one thing —</p>
+
+                <p><strong>You will never leave me alone in this world.</strong></p>
+
+                <div class="ending">
+                    <p class="ending-signature">Always yours 🤍</p>
+                    <div class="ending-hearts">
+                        <span>♥</span>
+                        <span>♡</span>
+                        <span>♥</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -187,8 +187,10 @@ function unlock() {
 
   if (!isNaN(num) && complexCheck(num)) {
 
-      document.getElementById("lockScreen").classList.add("hidden");
-      document.getElementById("mainContent").classList.remove("hidden");
+    localStorage.setItem("authenticated", "true"); // ✅ ADD THIS LINE
+
+    document.getElementById("lockScreen").classList.add("hidden");
+    document.getElementById("mainContent").classList.remove("hidden");
 
   } else {
       errorMsg.textContent = "Wrong password… try again 🤍";

@@ -116,6 +116,43 @@ footer {
 .hidden {
   display: none;
 }
+
+.password-box{
+  position: relative;
+  width: 80%;
+  margin: 20px auto 0;
+}
+
+.password-box input{
+  width: 100%;
+  padding: 12px 45px 12px 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.toggle-eye{
+  position: absolute;
+  right: 15px;
+  top: 40px;
+  transform: translateY(-50%);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  cursor: pointer;
+  user-select: none;
+
+  color: #444;          /* dark eye */
+  font-size: 20px;
+}
+
 </style>
 </head>
 
@@ -125,8 +162,28 @@ footer {
 <div class="lock-box" id="lockScreen">
   <h1>🔒 Private Letters</h1>
   <p>Only my Princess knows the secret 🤍</p>
-  <input type="password" id="passwordInput" placeholder="Enter Password">
-  <br>
+  <div class="password-box">
+    <input 
+        type="password" 
+        id="passwordInput" 
+        placeholder="Enter Password"
+        onkeydown="if(event.key === 'Enter') unlock()"
+    >
+
+    <span class="toggle-eye" onclick="togglePassword()">
+
+<svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg"
+width="22" height="22" viewBox="0 0 24 24"
+fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+
+<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"></path>
+<circle cx="12" cy="12" r="3"></circle>
+
+</svg>
+
+</span>
+  </div>
   <button onclick="unlock()">Unlock</button>
   <div class="error" id="errorMsg"></div>
 </div>
@@ -195,6 +252,36 @@ function unlock() {
   } else {
       errorMsg.textContent = "Wrong password… try again 🤍";
   }
+}
+function togglePassword() {
+
+    const passwordInput = document.getElementById("passwordInput");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    if (passwordInput.type === "password") {
+
+        passwordInput.type = "text";
+
+        eyeIcon.innerHTML = `
+        <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20C5 20 1 12 1 12
+        a21.77 21.77 0 0 1 5.06-7.94"></path>
+
+        <path d="M9.9 4.24A10.94 10.94 0 0 1 12 4
+        c7 0 11 8 11 8a21.8 21.8 0 0 1-2.16 3.19"></path>
+
+        <path d="M1 1l22 22"></path>
+        <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"></path>
+        `;
+
+    } else {
+
+        passwordInput.type = "password";
+
+        eyeIcon.innerHTML = `
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"></path>
+        <circle cx="12" cy="12" r="3"></circle>
+        `;
+    }
 }
 </script>
 
